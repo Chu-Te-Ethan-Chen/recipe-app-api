@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'user',
     'recipe',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,21 @@ MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
 AUTH_USER_MODEL = 'core.User'
+
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': '/admin/login',
+    'LOGOUT_URL': '/admin/logout',
+    # Plan A
+    # JWT Bearer token authentication #46
+    # https://github.com/axnsan12/drf-yasg/issues/46
+    # Plan B
+    # Swagger Automatic Token Authorization #638
+    # https://github.com/axnsan12/drf-yasg/issues/638
+    'SECURITY_DEFINITIONS': {
+        'DRF Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+}

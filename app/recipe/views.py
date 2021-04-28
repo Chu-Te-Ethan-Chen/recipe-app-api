@@ -18,6 +18,10 @@ class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
+    # raise TypeError('Cannot cast AnonymousUser to int.
+    # Are you trying to use it in place of User?')
+    # https://github.com/axnsan12/drf-yasg/issues/333
+    # https://github.com/carltongibson/django-filter/issues/966
     def get_queryset(self):
         """Return objects for the current authenticated user only"""
         assigned_only = bool(
