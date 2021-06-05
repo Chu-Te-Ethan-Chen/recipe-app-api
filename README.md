@@ -13,6 +13,10 @@ docker-compose up
 docker-compose run --rm app sh -c "python manage.py test && flake8"
 ```
 
+## Docs
+
+[http://localhost:8000/swagger/](http://localhost:8000/swagger/)
+
 ## **Usage**
 
 ### Create a user
